@@ -218,9 +218,9 @@ section{padding:7rem 4rem;min-height:100vh;display:flex;flex-direction:column;ju
 .exp-card.visible .bullet-list li:nth-child(4){transition-delay:.4s}
 .exp-card.visible .bullet-list li:nth-child(5){transition-delay:.5s}
 .exp-card.visible .bullet-list li:nth-child(6){transition-delay:.6s}
-.bullet-list li::before{content:'▸';position:absolute;left:0;color:var(--amber-dark);font-size:.75rem;top:.1em}
+.bullet-list li::before{content:'\25B8';position:absolute;left:0;color:var(--amber-dark);font-size:.75rem;top:.1em}
 .bullet-list li.achievement{color:var(--ink);font-weight:500}
-.bullet-list li.achievement::before{content:'★';color:var(--amber)}
+.bullet-list li.achievement::before{content:'\2605';color:var(--amber)}
 .section-divider{width:48px;height:3px;background:var(--amber-dark);border-radius:2px;margin-bottom:1rem}
 
 /* ── EDUCATION ── */
@@ -243,7 +243,7 @@ section{padding:7rem 4rem;min-height:100vh;display:flex;flex-direction:column;ju
 .edu-card.visible .edu-highlights li:nth-child(1){transition-delay:.2s}
 .edu-card.visible .edu-highlights li:nth-child(2){transition-delay:.35s}
 .edu-card.visible .edu-highlights li:nth-child(3){transition-delay:.5s}
-.edu-highlights li::before{content:'▸';position:absolute;left:0;color:var(--amber-dark)}
+.edu-highlights li::before{content:'\25B8';position:absolute;left:0;color:var(--amber-dark)}
 .edu-gpa{display:inline-flex;gap:.5rem;margin-top:.75rem}
 .gpa-pill{padding:.25rem .75rem;background:var(--paper);border-radius:50px;font-size:.78rem;font-weight:600;color:var(--amber-dark);border:1px solid var(--sand)}
 
@@ -276,10 +276,13 @@ section{padding:7rem 4rem;min-height:100vh;display:flex;flex-direction:column;ju
 .tech-tag{display:inline-block;padding:.3rem .85rem;background:rgba(162,197,214,.1);border:1px solid rgba(162,197,214,.25);border-radius:50px;font-size:.75rem;color:var(--amber-light);font-family:var(--mono);opacity:0;transform:scale(.7);transition:opacity .3s,transform .3s}
 .proj-card.visible .tech-tag{opacity:1;transform:scale(1)}
 .tech-tag:hover{background:var(--amber-dark);color:var(--white);border-color:var(--amber-dark)}
-.pub-card{background:rgba(255,255,255,.04);border:1px solid rgba(162,197,214,.2);border-radius:var(--radius);padding:1.5rem 2rem;margin-top:2rem;display:flex;align-items:center;gap:1.5rem}
+
+.pub-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.pub-card{background:rgba(255,255,255,.04);border:1px solid rgba(162,197,214,.2);border-radius:var(--radius);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;height:100%;transition:background var(--transition),border-color var(--transition),transform var(--transition)}
+.pub-card:hover{background:rgba(255,255,255,.08);border-color:var(--amber-light);transform:translateY(-4px)}
 .pub-icon{font-size:2rem;flex-shrink:0}
 .pub-label{font-family:var(--mono);font-size:.7rem;color:var(--amber-light);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
-.pub-title{font-size:.95rem;color:var(--cream);font-weight:500}
+.pub-title{font-size:.95rem;color:var(--cream);font-weight:500;line-height:1.4}
 .pub-meta{font-size:.82rem;color:var(--soft);margin-top:.2rem}
 
 /* ── SKILLS ── */
@@ -293,11 +296,8 @@ section{padding:7rem 4rem;min-height:100vh;display:flex;flex-direction:column;ju
 .cat-icon{font-size:1.5rem;transition:transform .3s}
 .cat-name{font-family:var(--serif);font-size:1.15rem;color:var(--ink)}
 .skill-item{margin-bottom:1.1rem}
-.skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
-.skill-name{font-size:.88rem;color:var(--mid);font-weight:500}
-.skill-pct{font-family:var(--mono);font-size:.78rem;color:var(--amber-dark);font-weight:600}
-.bar-track{height:5px;background:var(--cream);border-radius:3px;overflow:hidden}
-.bar-fill{height:100%;background:linear-gradient(90deg,var(--amber-dark),var(--amber-light));border-radius:3px;width:0;transition:width 1.1s ease-out}
+.skill-name{font-size:.9rem;color:var(--ink);font-weight:600}
+.skill-source{display:block;font-size:.78rem;color:var(--mid);margin-top:.15rem;font-family:var(--sans);line-height:1.45}
 
 /* ── CERTIFICATIONS ── */
 #certifications{background:var(--cream)}
@@ -456,7 +456,40 @@ footer .copy{font-size:.78rem;color:var(--mid)}
   nav{padding:0 1.5rem}
   .nav-links{display:none}
   .nav-toggle{display:flex}
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
   section{padding:5rem 1.5rem}
+  .landing-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  .landing-intro {
+    margin-left: auto;
+    margin-right: auto;
+    border-left: none;
+    border-top: 3px solid var(--amber-dark);
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
+  .cta-row {
+    justify-content: center;
+  }
+  .social-row {
+    justify-content: center;
+  }
+  .landing-visual {
+    height: auto;
+    min-height: 400px;
+    margin-top: 1rem;
+  }
   .about-grid{grid-template-columns:1fr}
   .about-photo-col{position:relative;top:0}
   .about-photo,.about-photo-placeholder{max-height:320px;aspect-ratio:3/2}
@@ -474,6 +507,36 @@ footer .copy{font-size:.78rem;color:var(--mid)}
   .skills-grid{grid-template-columns:1fr}
   .cert-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:1fr 1fr}
+  .visual-profile-card {
+    width: 220px;
+    height: 280px;
+  }
+  .floating-badge {
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .badge-svg {
+    width: 28px;
+    height: 28px;
+  }
+  .badge-title {
+    font-size: 0.7rem;
+  }
+  .badge-sub {
+    font-size: 0.55rem;
+  }
+  .badge-1 {
+    right: -2%;
+    top: 5%;
+  }
+  .badge-2 {
+    left: -4%;
+    bottom: 15%;
+  }
+  .badge-3 {
+    right: -2%;
+    bottom: 2%;
+  }
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -513,7 +576,7 @@ section{scroll-margin-top:64px}
       <p class="landing-tag">Software Engineer &amp; Product Thinker</p>
       <h1 class="landing-name">Chaitrali<br/><span>Kore</span></h1>
       <p class="landing-intro">
-        I build products that sit at the intersection of engineering depth and product clarity, from AI-powered safety platforms to fintech MVPs. With a foundation in Electronics &amp; Telecommunication and hands-on experience across React, FastAPI, PyTorch, and cloud-native stacks, I bring features from whiteboard to production. Recognised by Flipkart GWC among the top 250 engineers nationally, I thrive in cross-functional environments where great ideas need rigorous execution. If you're building something ambitious, let's talk.
+        I build products that sit at the intersection of engineering depth and product clarity, from AI-powered safety platforms to fintech MVPs. With a foundation in Electronics &amp; Telecommunication and hands-on experience across React, FastAPI, PyTorch, and cloud-native stacks, I bring features from whiteboard to production. Recognised by Flipkart GWC as a national scholar, I thrive in cross-functional environments where great ideas need rigorous execution. If you're building something ambitious, let's talk.
       </p>
       <div class="cta-row">
         <a href="#about" class="btn btn-primary">Learn More About Me ↓</a>
@@ -541,7 +604,7 @@ section{scroll-margin-top:64px}
         </span>
         <div class="badge-text">
           <div class="badge-title">Flipkart GWC Scholar</div>
-          <div class="badge-sub">National Rank 250</div>
+          <div class="badge-sub">National Scholar</div>
         </div>
       </div>
       <div class="floating-badge badge-2">
@@ -753,16 +816,63 @@ section{scroll-margin-top:64px}
 
   </div>
 
-  <!-- Publication -->
-  <div class="pub-card">
-    <div class="pub-icon">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-    </div>
-    <div>
-      <div class="pub-label">Publication</div>
-      <div class="pub-title">The Nano Banana Effect: How Instant Creation Will Redefine User Expectations</div>
-      <div class="pub-meta">Medium &nbsp;·&nbsp; August 2025</div>
-    </div>
+  <!-- Publications Grid -->
+  <div class="pub-list">
+    <!-- Miro AI Teardown -->
+    <a href="https://www.linkedin.com/pulse/miro-ai-teardown-what-got-right-whats-breaking-id-ship-chaitrali-kore-xxopc/" target="_blank" aria-label="Miro AI Teardown Publication">
+      <div class="pub-card">
+        <div class="pub-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="pub-label">Publication</div>
+          <div class="pub-title">Miro AI Teardown: What it got right, what's breaking, and what I'd ship</div>
+          <div class="pub-meta">LinkedIn &nbsp;·&nbsp; June 2026</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Free Intelligence Era -->
+    <a href="https://www.linkedin.com/pulse/free-intelligence-era-has-begun-product-managers-need-kore-ubykf/" target="_blank" aria-label="Free Intelligence Era Publication">
+      <div class="pub-card">
+        <div class="pub-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="pub-label">Publication</div>
+          <div class="pub-title">The Free Intelligence Era Has Begun: What Product Managers Need to Know</div>
+          <div class="pub-meta">LinkedIn &nbsp;·&nbsp; May 2026</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Great vs Good PMs -->
+    <a href="https://medium.com/@ChaitraliKore/what-separates-great-product-managers-from-good-ones-eefd6a6d735d" target="_blank" aria-label="Great vs Good PMs Publication">
+      <div class="pub-card">
+        <div class="pub-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="pub-label">Publication</div>
+          <div class="pub-title">What Separates Great Product Managers from Good Ones</div>
+          <div class="pub-meta">Medium &nbsp;·&nbsp; October 2025</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Nano Banana Effect -->
+    <a href="https://medium.com/@ChaitraliKore/the-nano-banana-effect-how-instant-creation-will-redefine-user-expectations-58728d7fb9d6" target="_blank" aria-label="Nano Banana Effect Publication">
+      <div class="pub-card">
+        <div class="pub-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-light);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="pub-label">Publication</div>
+          <div class="pub-title">The Nano Banana Effect: How Instant Creation Will Redefine User Expectations</div>
+          <div class="pub-meta">Medium &nbsp;·&nbsp; August 2025</div>
+        </div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -775,53 +885,134 @@ section{scroll-margin-top:64px}
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">Languages</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript / TypeScript</span><span class="skill-pct js-pct">90%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="90"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct js-pct">85%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="85"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Java</span><span class="skill-pct js-pct">80%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="80"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL</span><span class="skill-pct js-pct">78%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="78"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">C++</span><span class="skill-pct js-pct">72%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="72"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">JavaScript / TypeScript</div>
+        <div class="skill-source">Applied in Echoplex, Modern Banking, and Spark Sphere</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Python</div>
+        <div class="skill-source">Applied in Echoplex (YOLOv8/PyTorch) and academic coursework</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Java</div>
+        <div class="skill-source">Gained during Cummins College OOP and DSA coursework</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">SQL</div>
+        <div class="skill-source">Used for system design and Cummins College database coursework</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">C++</div>
+        <div class="skill-source">Gained through problem-solving and algorithms coursework</div>
+      </div>
     </div>
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">Frontend &amp; Frameworks</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">React</span><span class="skill-pct js-pct">92%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="92"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Next.js</span><span class="skill-pct js-pct">87%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="87"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Node.js</span><span class="skill-pct js-pct">85%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="85"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">FastAPI</span><span class="skill-pct js-pct">82%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="82"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">React</div>
+        <div class="skill-source">Applied in Echoplex (Dashboard) and Spark Sphere</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Next.js</div>
+        <div class="skill-source">Used to build the Modern Banking Platform frontend</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Node.js</div>
+        <div class="skill-source">Applied in Spark Sphere backend automation</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">FastAPI</div>
+        <div class="skill-source">Used for Echoplex crowd-analysis ML inference backend</div>
+      </div>
     </div>
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">AI / ML</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">PyTorch</span><span class="skill-pct js-pct">80%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="80"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">OpenCV / Computer Vision</span><span class="skill-pct js-pct">78%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="78"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">YOLOv8</span><span class="skill-pct js-pct">75%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="75"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">OpenAI API Integration</span><span class="skill-pct js-pct">85%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="85"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">PyTorch</div>
+        <div class="skill-source">Used in Echoplex for crowd density model development</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">OpenCV / Computer Vision</div>
+        <div class="skill-source">Applied in Echoplex real-time video stream processing</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">YOLOv8</div>
+        <div class="skill-source">Integrated into Echoplex for object detection at scale</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">OpenAI API Integration</div>
+        <div class="skill-source">Used in Spark Sphere for email and prompt automation</div>
+      </div>
     </div>
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">Cloud &amp; Infrastructure</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Firebase</span><span class="skill-pct js-pct">85%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="85"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Google Vertex AI</span><span class="skill-pct js-pct">73%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="73"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">GitHub / Version Control</span><span class="skill-pct js-pct">90%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="90"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">ServiceNow Platform</span><span class="skill-pct js-pct">75%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="75"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">Firebase</div>
+        <div class="skill-source">Integrated in Echoplex for live databases and auth</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Google Vertex AI</div>
+        <div class="skill-source">Gained during academic coursework and ML research</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">GitHub / Version Control</div>
+        <div class="skill-source">Applied across all projects and Mozilla club repositories</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">ServiceNow Platform</div>
+        <div class="skill-source">Gained during ServiceNow System Administrator Internship</div>
+      </div>
     </div>
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">Product Management</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Agile / Scrum</span><span class="skill-pct js-pct">88%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="88"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Roadmap Prioritisation</span><span class="skill-pct js-pct">83%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="83"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">User Research</span><span class="skill-pct js-pct">80%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="80"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Stakeholder Analysis</span><span class="skill-pct js-pct">82%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="82"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">Agile / Scrum</div>
+        <div class="skill-source">Applied in Mozilla Club leadership and McKinsey Forward</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Roadmap Prioritisation</div>
+        <div class="skill-source">Practiced during Mozilla Club events and McKinsey Forward</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">User Research</div>
+        <div class="skill-source">Conducted for Mozilla events and Providence LEAP Ideathon</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Stakeholder Analysis</div>
+        <div class="skill-source">Applied in Mozilla Club management and McKinsey program</div>
+      </div>
     </div>
 
     <div class="skill-cat js-skill">
       <div class="cat-header"><span class="cat-name">Tools &amp; Platforms</span></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Jira</span><span class="skill-pct js-pct">83%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="83"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">TailwindCSS</span><span class="skill-pct js-pct">88%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="88"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Appwrite / BaaS</span><span class="skill-pct js-pct">78%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="78"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Git &amp; GitHub</span><span class="skill-pct js-pct">92%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="92"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Postman / API Testing</span><span class="skill-pct js-pct">80%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="80"></div></div></div>
-      <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma</span><span class="skill-pct js-pct">82%</span></div><div class="bar-track"><div class="bar-fill js-bar" data-val="82"></div></div></div>
+      <div class="skill-item">
+        <div class="skill-name">Jira</div>
+        <div class="skill-source">Used for task tracking in Mozilla Campus Club operations</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">TailwindCSS</div>
+        <div class="skill-source">Applied in Modern Banking Platform for responsive layout</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Appwrite / BaaS</div>
+        <div class="skill-source">Integrated in Modern Banking Platform for databases and auth</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Git &amp; GitHub</div>
+        <div class="skill-source">Used daily for version control and team collaborations</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Postman / API Testing</div>
+        <div class="skill-source">Used to test and mock REST APIs for Spark Sphere</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Figma</div>
+        <div class="skill-source">Used for design and prototyping in Modern Banking and LEAP Ideathon</div>
+      </div>
     </div>
 
   </div>
@@ -858,7 +1049,19 @@ section{scroll-margin-top:64px}
       </div>
     </div>
 
-    <!-- Project Management -->
+    <!-- Product Management Foundations -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/product_management.jpg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/product_management.jpg" alt="Product Management Foundations"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">Product School</p>
+        <h4 class="cert-name">Product Management Foundations</h4>
+        <p class="cert-instructor">Strategy, UX, and Product Execution</p>
+      </div>
+    </div>
+
+    <!-- Project Management Foundations -->
     <div class="cert-card js-reveal" data-lightbox="assets/certificates/pm_foundations.jpg">
       <div class="cert-img-wrap">
         <img src="assets/certificates/pm_foundations.jpg" alt="PM Foundations"/>
@@ -901,12 +1104,12 @@ section{scroll-margin-top:64px}
       </div>
       <div class="cert-body">
         <p class="cert-provider">Providence India</p>
-        <h4 class="cert-name">LEAP Ideathon finalist</h4>
+        <h4 class="cert-name">LEAP Ideathon Finalist</h4>
         <p class="cert-instructor">Product Design &amp; Pitch Contest</p>
       </div>
     </div>
 
-    <!-- MUN Delegate -->
+    <!-- MUN Delegate 1 -->
     <div class="cert-card js-reveal" data-lightbox="assets/certificates/mun_1.jpeg">
       <div class="cert-img-wrap">
         <img src="assets/certificates/mun_1.jpeg" alt="MUN Certificate"/>
@@ -915,6 +1118,18 @@ section{scroll-margin-top:64px}
         <p class="cert-provider">Model United Nations</p>
         <h4 class="cert-name">MUN Delegate Representative</h4>
         <p class="cert-instructor">Negotiation &amp; Policy Drafting</p>
+      </div>
+    </div>
+
+    <!-- MUN Delegate 2 -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/mun_2.jpeg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/mun_2.jpeg" alt="MUN Delegate Council"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">Model United Nations</p>
+        <h4 class="cert-name">MUN Delegate Council Representative</h4>
+        <p class="cert-instructor">International Relations &amp; Debate</p>
       </div>
     </div>
 
@@ -930,6 +1145,66 @@ section{scroll-margin-top:64px}
       </div>
     </div>
 
+    <!-- Mozilla Web Dev Lead -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/mozilla_event_1.jpeg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/mozilla_event_1.jpeg" alt="Mozilla Web Dev Lead"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">Mozilla Campus Club</p>
+        <h4 class="cert-name">Mozilla Web Dev Lead</h4>
+        <p class="cert-instructor">Web Development Workshop Organization</p>
+      </div>
+    </div>
+
+    <!-- Mozilla Campus Event Coordinator -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/mozilla_event_2.jpeg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/mozilla_event_2.jpeg" alt="Mozilla Campus Event Coordinator"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">Mozilla Campus Club</p>
+        <h4 class="cert-name">Campus Event Coordinator</h4>
+        <p class="cert-instructor">Community Outreach &amp; Event Operations</p>
+      </div>
+    </div>
+
+    <!-- AI Fluency for Students -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/ai_fluency_students.jpg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/ai_fluency_students.jpg" alt="AI Fluency for Students"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">AI Fluency</p>
+        <h4 class="cert-name">AI Fluency for Students</h4>
+        <p class="cert-instructor">Artificial Intelligence Fundamentals</p>
+      </div>
+    </div>
+
+    <!-- AI Fluency Framework & Foundations -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/ai_fluency_framework.jpg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/ai_fluency_framework.jpg" alt="AI Fluency Framework &amp; Foundations"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">AI Fluency</p>
+        <h4 class="cert-name">AI Fluency Framework &amp; Foundations</h4>
+        <p class="cert-instructor">Advanced AI Frameworks &amp; Systems</p>
+      </div>
+    </div>
+
+    <!-- Claude 101 -->
+    <div class="cert-card js-reveal" data-lightbox="assets/certificates/claude_101.jpg">
+      <div class="cert-img-wrap">
+        <img src="assets/certificates/claude_101.jpg" alt="Claude 101"/>
+      </div>
+      <div class="cert-body">
+        <p class="cert-provider">AI Fluency</p>
+        <h4 class="cert-name">Claude 101</h4>
+        <p class="cert-instructor">LLM Architecture &amp; Prompt Engineering</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -941,8 +1216,8 @@ section{scroll-margin-top:64px}
   
   <div class="stats-row">
     <div class="stat-box js-reveal">
-      <div class="stat-num">250</div>
-      <div class="stat-label">Flipkart GWC Rank</div>
+      <div class="stat-num">GWC 6.0</div>
+      <div class="stat-label">Flipkart Scholar</div>
     </div>
     <div class="stat-box js-reveal" data-delay="0.1">
       <div class="stat-num">10+</div>
@@ -985,7 +1260,7 @@ section{scroll-margin-top:64px}
       <h3 class="achiev-title">Flipkart Girls Wanna Code Mentee</h3>
       <p class="achiev-inst">Flipkart</p>
       <p class="achiev-desc">
-        Identified as one of India's top 250 female engineering scholars through Flipkart's national developer challenge. Received mentorship from Flipkart staff engineers on scaling system architecture and data structures.
+        Selected as a national scholar through Flipkart's national developer challenge. Received mentorship from Flipkart staff engineers on scaling system architecture and data structures.
       </p>
       <div class="achiev-preview-wrap" style="margin-top: 1.5rem; border-radius: 8px; overflow: hidden; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1);">
         <img src="assets/achievements/flipkart_gwc_mentee.jpeg" alt="Flipkart GWC 6.0 Scholar Certificate" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.95);"/>
